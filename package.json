@@ -1,0 +1,30 @@
+{
+  "name": "task-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "prod": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idavidka/epam-react-2018.git"
+  },
+  "author": "idavid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/idavidka/epam-react-2018/issues"
+  },
+  "homepage": "https://github.com/idavidka/epam-react-2018#readme",
+  "dependencies": {
+    "jest": "^23.6.0",
+    "react": "^16.6.3",
+    "react-redux": "^5.1.1",
+    "react-router": "^4.3.1",
+    "redux": "^4.0.1",
+    "webpack": "^4.26.1",
+    "webpack-cli": "^3.1.2"
+  }
+}

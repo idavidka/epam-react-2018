@@ -4,9 +4,11 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --mode development",
-    "prod": "webpack --mode production"
+    "test": "node tests/app.js",
+    "dev": "webpack",
+    "prod": "webpack --env.production",
+    "start": "npm run dev && webpack-dev-server",
+    "start-prod": "npm run prod && webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -19,12 +21,21 @@
   },
   "homepage": "https://github.com/idavidka/epam-react-2018#readme",
   "dependencies": {
-    "jest": "^23.6.0",
-    "react": "^16.6.3",
-    "react-redux": "^5.1.1",
-    "react-router": "^4.3.1",
-    "redux": "^4.0.1",
-    "webpack": "^4.26.1",
-    "webpack-cli": "^3.1.2"
+    "babel-core": "6.26.0",
+    "babel-loader": "7.1.4",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-stage-2": "6.24.1",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "23.6.0",
+    "lodash": "4.17.11",
+    "react": "16.6.3",
+    "react-dom": "16.6.3",
+    "react-redux": "5.1.1",
+    "react-router": "4.3.1",
+    "redux": "4.0.1",
+    "webpack": "4.26.1",
+    "webpack-cli": "3.1.2",
+    "webpack-dev-server": "^3.1.10"
   }
 }

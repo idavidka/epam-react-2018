@@ -4,7 +4,7 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "test": "node tests/app.js",
+    "test": "jest ./tests/*",
     "dev": "webpack",
     "prod": "webpack --env.production",
     "start": "npm run dev && webpack-dev-server",

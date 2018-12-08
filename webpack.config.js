@@ -22,12 +22,31 @@ module.exports = (env = {}, options = {}) => {
                     test: /\.jsx?$/,
                     loader: 'babel-loader',
                     exclude: /node_modules/
+                },
+                {
+                    test: /\.less$/,
+                    use: [
+                        {
+                            loader: "style-loader"
+                        },
+                        {
+                            loader: "css-loader",
+                            options: {
+                                sourceMap: env.production === true,
+                                modules: true,
+                                localIdentName: "[local]___[hash:base64:5]"
+                            }
+                        },
+                        {
+                            loader: "less-loader"
+                        }
+                    ]
                 }
             ]
         },
         plugins: [
             new htmlPlugin({
-                title: 'Task 2',
+                title: 'Task 3',
                 template: './app.html'
             }),
             new webpack.ProvidePlugin({

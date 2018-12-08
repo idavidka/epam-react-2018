@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
+import Field from './field';
+import Button from './button';
 
 module.exports = class Search extends Component {
     render() {
-        return <div>
-            <label>{this.props.title}</label>
-            <input type={'text'} name={this.props.name} placeholder={this.props.placeholder} />
+        return <div className="container">
+            <div className="fields">
+                <Field placeholder={this.props.placeholder}/>
+                <Button content={this.props.button} />
+            </div>
         </div>
     }
 }

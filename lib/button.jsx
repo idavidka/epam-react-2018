@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 
 module.exports = class Search extends Component {
     onSearch() {
-        console.log('search');
+
+        console.log('search', this.state);
     }
 
     render() {

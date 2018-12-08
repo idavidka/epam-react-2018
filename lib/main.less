@@ -1,7 +1,92 @@
 @back-color: black;
+@disabled-color: gray;
 @fore-color: white;
+@highlight-color: #ff525c;
+
+.button {
+  padding: 10px;
+  background-color: @highlight-color;
+  color: @fore-color;
+  font-size: 16px;
+  border: none;
+  margin: 5px;
+  display: block;
+}
 
 body {
-  background-color: @back-color;
+  background: url('../assets/movies-tiles.jpg');
   color: @fore-color;
+  font-family: 'Arial';
+  margin: 0;
+
+  #app {
+    background-color: fade(@back-color, 70%);
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+
+    >div {
+      width: 80%;
+      margin: auto;
+      padding-top: 100px;
+
+      h1 {
+        color: @highlight-color;
+      }
+
+      .container {
+
+        .fields {
+          input {
+            float: right;
+
+            .button();
+          }
+
+          .filters {
+            >div {
+              display: inline-block;
+
+              input {
+                display: none;
+
+                +label {
+                  .button();
+
+                  background-color: @disabled-color;
+                }
+
+                &:checked+label {
+                  background-color: @highlight-color;
+                }
+              }
+            }
+          }
+
+          .field {
+            label {
+              display: block;
+              width: 100%;
+              text-transform: uppercase;
+            }
+
+            input {
+              background-color: @back-color;
+              border: none;
+              padding: 10px;
+              border-bottom: 3px solid @highlight-color;
+              width: 100%;
+              font-size: 20px;
+              color: @fore-color;
+            }
+
+            .error {
+            }
+          }
+        }
+      }
+    }
+  }
 }

@@ -2,6 +2,8 @@ const path = require('path')
       webpack = require('webpack'),
       htmlPlugin = require('html-webpack-plugin');
 
+const assetsFolder = path.join(__dirname, 'assets');
+
 module.exports = (env = {}, options = {}) => {
     const config = {
         mode: env.production === true ? 'production' : 'development',
@@ -32,15 +34,17 @@ module.exports = (env = {}, options = {}) => {
                         {
                             loader: "css-loader",
                             options: {
-                                sourceMap: env.production === true,
-                                modules: true,
-                                localIdentName: "[local]___[hash:base64:5]"
+                                sourceMap: env.production === true
                             }
                         },
                         {
                             loader: "less-loader"
                         }
                     ]
+                },
+                {
+                    test: /\.(png|gif|jpe?g|svg|ico)$/,
+                    loader: 'file-loader'
                 }
             ]
         },

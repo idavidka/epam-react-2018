@@ -5,6 +5,9 @@ const path = require('path')
 const assetsFolder = path.join(__dirname, 'assets');
 
 module.exports = (env = {}, options = {}) => {
+    const pkg = require('./package.json');
+    const version = pkg.version.match(/(\d+)/g)[2];
+
     const config = {
         mode: env.production === true ? 'production' : 'development',
         context: path.join(__dirname, 'lib'),
@@ -50,11 +53,11 @@ module.exports = (env = {}, options = {}) => {
         },
         plugins: [
             new htmlPlugin({
-                title: 'Task 3',
+                title: `Task - ${version}`,
                 template: './app.html'
             }),
             new webpack.ProvidePlugin({
-                _: "lodash"
+                _: 'lodash'
             })
         ]
     };

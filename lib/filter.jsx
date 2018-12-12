@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-module.exports = class Search extends Component {
+export default class Search extends Component {
     constructor(props) {
         super(props);
 

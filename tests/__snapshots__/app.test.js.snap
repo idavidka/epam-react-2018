@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App should render html structure 1`] = `<Search />`;
+exports[`App should render html structure 1`] = `
+<Search
+  button="Button"
+  placeholder="Test"
+  title="Test"
+/>
+`;

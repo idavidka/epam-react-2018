@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-module.exports = class Search extends Component {
+export default class Search extends Component {
     onSearch() {
 
         console.log('search', this.state);

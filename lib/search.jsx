@@ -4,7 +4,7 @@ import Button from './button';
 import Results from './results';
 import Filter from './filter';
 
-module.exports = class Search extends Component {
+export default class Search extends Component {
 
     constructor(props) {
         super(props);

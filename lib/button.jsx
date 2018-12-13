@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 export default class Search extends Component {
     onSearch() {
-
         console.log('search', this.state);
     }
 

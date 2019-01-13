@@ -18,7 +18,7 @@ export default class Search extends Component {
             Search by
             {['Title', 'Genre'].map(type =>
                 <div key={type}>
-                    <input type="radio" id={type} name="type" checked={this.props.typeHandler() === type} value={type} onChange={this.onChangeFilter.bind(this)} />
+                    <input type="radio" id={type} name="type" checked={this.props.type === type} value={type} onChange={this.onChangeFilter.bind(this)} />
                     <label htmlFor={type}>{type}</label>
                 </div>)}
         </div>

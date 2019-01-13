@@ -9,23 +9,37 @@ export default class Search extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            type: 'Title'
+        };
     }
 
-    type(type) {
+    getType() {
         if(arguments.length <= 0) {
-            return this.state.checked || 'Title';
+            return this.state.type || 'Title';
         }
+    }
 
-        this.setState({checked: type});
+    setType(type) {
+        this.setState({type: type});
+    }
+
+    setQuery(event) {
+        this.setState({
+            query: event.target.value
+        });
+    }
+
+    onSearch() {
+        console.log('search', this.state);
     }
 
     render() {
         return <div className="container">
             <div className="fields">
-                <Field title={this.props.title} placeholder={this.props.placeholder}/>
-                <Button content={this.props.button} />
-                <Filter typeHandler={this.type.bind(this)} />
+                <Field title={this.props.title} placeholder={this.props.placeholder} change={this.setQuery.bind(this)} />
+                <Button content={this.props.button} search={this.onSearch.bind(this)} />
+                <Filter typeHandler={this.setType.bind(this)} type={this.getType()}/>
             </div>
             <Results />
         </div>

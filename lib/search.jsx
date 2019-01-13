@@ -35,13 +35,17 @@ export default class Search extends Component {
     }
 
     render() {
-        return <div className="container">
-            <div className="fields">
-                <Field title={this.props.title} placeholder={this.props.placeholder} change={this.setQuery.bind(this)} />
-                <Button content={this.props.button} search={this.onSearch.bind(this)} />
-                <Filter typeHandler={this.setType.bind(this)} type={this.getType()}/>
+        console.log(arguments);
+        return <Provider store={store}>
+            <div className="container">
+                <div className="fields">
+                    <Field title={this.props.title} placeholder={this.props.placeholder}
+                           change={this.setQuery.bind(this)}/>
+                    <Button content={this.props.button} search={this.onSearch.bind(this)}/>
+                    <Filter typeHandler={this.setType.bind(this)} type={this.getType()}/>
+                </div>
+                <Results/>
             </div>
-            <Results />
-        </div>
+        </Provider>;
     }
 }

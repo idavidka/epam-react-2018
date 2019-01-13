@@ -26,6 +26,7 @@ body {
     top: 0;
     bottom: 0;
     right: 0;
+    overflow: auto;
 
     >div {
       width: 80%;
@@ -37,6 +38,55 @@ body {
       }
 
       .container {
+
+        .results {
+          background-color: fade(@fore-color, 70%);
+          color: @back-color;
+          padding: 20px;
+
+          &:after{
+            content: "";
+            clear: both;
+            display: table;
+          }
+
+          ul {
+            text-align: left;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+              width: 250px;
+              float: left;
+              margin-right: 30px;
+              margin-bottom: 30px;
+
+              img {
+                width: auto;
+                height: auto;
+                max-width: 100%;
+                max-height: 100%;
+              }
+
+              .title {
+                font-size: 14px;
+
+                .year {
+                  float: right;
+                  font-size: 12px;
+                  border: 1px solid black;
+                }
+              }
+
+              .genres {
+                font-size: 13px;
+                margin-top: 10px;
+              }
+
+            }
+          }
+        }
 
         .fields {
           input {

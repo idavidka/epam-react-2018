@@ -25,8 +25,6 @@ const store = createStore(
 );
 
 const mapStateToProps = state => {
-    console.log('state to prop', state);
-
     const movies = state.moviesByQuery || {};
 
     return {
@@ -47,6 +45,8 @@ export default class Search extends Component {
 
     constructor(props) {
         super(props);
+
+        console.log('ok',this.props);
 
         this.state = {
             type: 'Title'

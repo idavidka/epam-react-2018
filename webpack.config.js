@@ -13,6 +13,7 @@ module.exports = (env = {}, options = {}) => {
         context: path.join(__dirname, 'lib'),
         entry: './app',
         output: {
+            publicPath: '/',
             filename: 'app.js',
             path: path.join(__dirname, 'dist')
         },
@@ -21,6 +22,9 @@ module.exports = (env = {}, options = {}) => {
         },
         devtool: env.production === true ? 'source-map' : 'none',
         watch: options.watch === true,
+        devServer: {
+            historyApiFallback: true,
+        },
         module: {
             rules: [
                 {

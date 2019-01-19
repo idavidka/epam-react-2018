@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Error from './error'
 
-export default class Search extends Component {
+export default class Field extends Component {
     render() {
         return <div className="field">
             <label>{this.props.title}</label>

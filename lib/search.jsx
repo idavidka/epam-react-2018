@@ -1,38 +1,13 @@
 import React, {Component} from 'react';
+
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import Field from './field';
 import Button from './button';
 import Results from './results';
 import Filter from './filter';
 
-
-import { createStore, applyMiddleware } from 'redux';
-import { Provider, connect } from 'react-redux';
-import thunk from 'redux-thunk';
-import { createLogger } from 'redux-logger';
-import reducer from './reducers';
-
-import { fetchMovie } from "./actions";
-
-const middleware = [ thunk ]
-if (process.env.NODE_ENV !== 'production') {
-    middleware.push(createLogger());
-}
-
-const store = createStore(
-    reducer,
-    applyMiddleware(...middleware)
-);
-
-const mapStateToProps = state => {
-    const movies = state.moviesByQuery || {};
-
-    return {
-        isFetching: movies.isFetching === true ? true : false,
-        lastUpdated: movies.lastUpdated || Date.now(),
-        movies: movies.movies || []
-    }
-};
+import { fetchMovie, mapStateToProps } from "./actions";
 
 const ConnectedResult = connect(mapStateToProps)(Results);
 
@@ -46,11 +21,20 @@ export default class Search extends Component {
     constructor(props) {
         super(props);
 
-        console.log('ok',this.props);
-
         this.state = {
             type: 'Title'
         };
+    }
+
+    componentDidMount() {
+        if(this.props.history.location.search != '') {
+            const params = new URLSearchParams(this.props.history.location.search);
+
+            this.state.type = params.get('type');
+            this.state.query = params.get('query');
+
+            this.doSearch();
+        }
     }
 
     getType() {
@@ -60,7 +44,9 @@ export default class Search extends Component {
     }
 
     setType(type) {
-        this.setState({type: type});
+        this.setState({
+            type: type
+        });
     }
 
     setQuery(event) {
@@ -69,13 +55,18 @@ export default class Search extends Component {
         });
     }
 
+    doSearch() {
+        this.props.store.dispatch(fetchMovie(this.state.query, this.state.type));
+    }
+
     onSearch() {
-        store.dispatch(fetchMovie(this.state.query, this.state.type));
+        this.props.history.push(`/search?type=${this.state.type}&query=${this.state.query}`);
+        this.doSearch();
     }
 
     render() {
-        return <Provider store={store}>
-            <div className="container">
+        return <div className="container">
+                <h1>Netflixroulette</h1>
                 <div className="fields">
                     <Field title={this.props.title} placeholder={this.props.placeholder}
                            change={this.setQuery.bind(this)}/>
@@ -83,7 +74,6 @@ export default class Search extends Component {
                     <Filter typeHandler={this.setType.bind(this)} type={this.getType()}/>
                 </div>
                 <ConnectedResult />
-            </div>
-        </Provider>;
+            </div>;
     }
 }

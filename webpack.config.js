@@ -9,6 +9,7 @@ module.exports = (env = {}, options = {}) => {
     const version = pkg.version.match(/(\d+)/g)[2];
 
     const config = {
+        name: 'home-work',
         mode: env.production === true ? 'production' : 'development',
         context: path.join(__dirname, 'lib'),
         entry: './app',

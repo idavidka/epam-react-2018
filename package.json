@@ -10,7 +10,9 @@
     "prod": "webpack --env.production",
     "start": "npm run dev && webpack-dev-server",
     "start-prod": "npm run prod && webpack-dev-server",
-    "server": "node ./lib/server/index.js"
+    "server-dev": "node lib/server.js",
+    "server-build": "next build",
+    "server-start": "NODE_ENV=production node lib/server.js"
   },
   "repository": {
     "type": "git",
@@ -24,15 +26,16 @@
   "homepage": "https://github.com/idavidka/epam-react-2018#readme",
   "dependencies": {
     "babel-core": "6.26.0",
-    "babel-loader": "7.1.4",
+    "babel-loader": "6.4.1",
     "babel-preset-env": "1.6.1",
-    "babel-preset-react": "6.24.1",
+    "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "6.24.1",
     "cross-fetch": "^3.0.0",
     "css-loader": "2.0.0",
     "cypress": "2.1.0",
     "enzyme": "3.8.0",
     "enzyme-adapter-react-16": "1.7.1",
+    "express": "^4.14.0",
     "file-loader": "2.0.0",
     "html-webpack-plugin": "3.2.0",
     "jest": "23.6.0",

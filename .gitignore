@@ -3,3 +3,4 @@ node_modules
 dist
 coverage
 tests/__snapshots__
+pages/.next

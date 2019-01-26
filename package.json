@@ -6,13 +6,17 @@
   "scripts": {
     "cypress:open": "cypress open",
     "test": "jest ./tests/* -u",
-    "dev": "webpack",
-    "prod": "webpack --env.production",
+    "dev": "npm run storybook && webpack",
+    "prod": "npm run storybook && webpack --env.production",
     "start": "npm run dev && webpack-dev-server",
     "start-prod": "npm run prod && webpack-dev-server",
     "server-dev": "node lib/server.js",
-    "server-build": "next build",
-    "server-start": "NODE_ENV=production node lib/server.js"
+    "build": "next build",
+    "server-start": "NODE_ENV=production node lib/server.js",
+    "prepublish": "npm run build",
+    "flow": "flow",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -60,5 +64,18 @@
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./jest/config.js"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-jsx-a11y": "^6.2.0",
+    "eslint-plugin-react": "^7.12.4",
+    "flow-bin": "^0.91.0",
+    "@storybook/react": "^4.1.11",
+    "@storybook/addon-actions": "^4.1.11",
+    "@storybook/addon-links": "^4.1.11",
+    "@storybook/addons": "^4.1.11"
   }
 }
